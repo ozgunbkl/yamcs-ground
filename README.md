@@ -46,6 +46,33 @@ This script will send packets at 1 Hz over UDP to Yamcs. There is enough test da
 
 The packets are a bit artificial and include a mixture of HK and accessory data.
 
+## Real ESP32 FSW Telemetry (Wi-Fi)
+
+To receive live telemetry from ESP32 flight software instead of simulator.py:
+
+1. Start Yamcs:
+
+    mvnw.cmd yamcs:run
+
+2. Open Yamcs web UI:
+
+    http://localhost:8090
+
+3. In the ESP32 project, set the destination IP to your PC IPv4 address on the same Wi-Fi network:
+
+    components/comms/yamcs_interface.h
+
+   Update YAMCS_DEST_IP from the placeholder value to your actual PC IP.
+
+4. In the ESP32 project, set your Wi-Fi credentials in main/main.c:
+
+   - WIFI_SSID
+   - WIFI_PASSWORD
+
+5. Flash and run ESP32 firmware. Keep USB connected for flashing/logs, while telemetry transport uses Wi-Fi UDP.
+
+6. Do not run simulator.py when testing real hardware telemetry.
+
 
 ## Telecommanding
 

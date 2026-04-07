@@ -31,18 +31,14 @@ dataLinks:
   - name: udp-out
     class: org.yamcs.tctm.UdpTcDataLink
     stream: tc_realtime
-    host: localhost
+    host: 192.168.1.9
     port: 10025
-    commandPostprocessorClassName: com.example.myproject.MyCommandPostprocessor
 
 mdb:
-  # Configuration of the active loaders
-  # Valid loaders are: sheet, xtce or fully qualified name of the class
   - type: xtce
     args:
       file: mdb/xtce.xml
 
-# Configuration for streams created at server startup
 streamConfig:
   tm:
     - name: "tm_realtime"
@@ -55,4 +51,3 @@ streamConfig:
   tc:
     - name: "tc_realtime"
       processor: "realtime"
-
